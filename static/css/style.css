@@ -6,21 +6,32 @@ body {
     padding: 0;
 }
 
+button:disabled {
+    background-color: gray !important;
+    color: #ccc;
+}
+
 #chat {
     position: fixed;
     bottom: 10px;
-    left: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-#message_input {
+#message_input, #cry_button, button {
     padding: 10px;
-    width: 200px;
+    margin-right: 5px;
 }
 
 #messages {
     padding: 20px;
     height: 90vh;
     overflow-y: scroll;
+    margin-bottom: 50px; 
 }
 
 #user_count {
