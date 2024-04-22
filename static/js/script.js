@@ -1,10 +1,22 @@
 var socket = io();
 var cryCooldown = false;
 
+document.addEventListener('DOMContentLoaded', function() {
+    var input = document.getElementById('message_input');
+    input.addEventListener('keypress', function(event) {
+        if (event.keyCode === 13) {  // Check if the key pressed is the Enter key
+            event.preventDefault();  // Prevent the default action (form submission)
+            sendMessage();
+        }
+    });
+});
+
 function sendMessage() {
     var input = document.getElementById('message_input');
-    socket.emit('message', {text: input.value});
-    input.value = '';
+    if (input.value.trim() !== '') {  // Ensure the message is not just whitespace
+        socket.emit('message', {text: input.value});
+        input.value = '';  // Clear the input field after sending
+    }
 }
 
 function cry() {

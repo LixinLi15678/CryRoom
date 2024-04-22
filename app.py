@@ -17,7 +17,7 @@ def handle_message(data):
     # Generate random styles
     fonts = ['Arial', 'Verdana', 'Courier New', 'Georgia', 'Times New Roman', 'Comic Sans MS']
     sizes = ['16px', '18px', '20px', '22px', '24px', '26px']
-    colors = ['#ff0000', '#00ff00', '#0000ff', '#ff00ff', '#00ffff', '#ffff00']
+    colors = ['#ff0000', '#00ff00', '#0000ff', '#ff00ff', '#00ffff', '#8B0000', '#000080']
 
     style = {
         'font': random.choice(fonts),
