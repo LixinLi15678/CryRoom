@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cry Room Webapp</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
+</head>
+<body>
+    <div class="emoji-pattern"></div> 
+    <div id="chat">
+        <input type="text" id="message_input" placeholder="Type here...">
+        <button id="send_button" onclick="sendMessage()">Send</button>
+        <button id="cry_button" onclick="cry()">Cry 😭</button>
+    </div>
+    <div id="messages"></div>
+    <div id="user_count">Online Users: 0</div>
+    
+    <script src="static/js/script.js"></script>
+</body>
+</html>

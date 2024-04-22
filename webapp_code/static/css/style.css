@@ -1,0 +1,76 @@
+body {
+    /* Set the base background color */
+    background-color: rgba(255, 255, 224, 0.8);
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.emoji-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"%3E%3Ctext y="90%" x="50%" fill="rgba(0,0,0,0.2)" font-size="90" style="font-family: Arial, sans-serif; text-anchor: middle;"%3E😭%3C/text%3E%3C/svg%3E');
+    background-repeat: repeat;
+    pointer-events: none; 
+}
+
+.emoji-pattern {
+    transform: rotate(45deg);
+}
+
+button:disabled {
+    background-color: gray !important;
+    color: #ccc;
+}
+
+#chat {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#message_input, #cry_button, button {
+    padding: 10px;
+    margin-right: 5px;
+}
+
+#messages {
+    padding: 20px;
+    height: 90vh;
+    overflow-y: scroll;
+    margin-bottom: 50px; 
+}
+
+#user_count {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    font-size: 16px;
+    color: #666;
+    background-color: #fff;
+    padding: 5px 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+@keyframes cryAnimation {
+    0% { opacity: 1; transform: translateY(0); }
+    50% { opacity: 0.5; transform: translateY(-20px); }
+    100% { opacity: 0; transform: translateY(-40px); }
+}
+
+.cryingEmoji {
+    position: fixed;
+    font-size: 48px;
+    animation: cryAnimation 2s ease-out forwards;
+    pointer-events: none; 
+}
