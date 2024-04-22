@@ -7,7 +7,7 @@ sockets = Sockets(app)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index1.html')
 
 @sockets.route('/cry_room')
 def cry_room_socket(ws):

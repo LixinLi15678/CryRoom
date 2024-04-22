@@ -1,24 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Crying Room</title>
-    <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function() {
-            var ws = new WebSocket('ws://' + window.location.host + '/cry_room');
-            ws.onmessage = function(message) {
-                var data = JSON.parse(message.data);
-                document.getElementById('cryersCount').innerText = data.cryers_count;
-            };
-
-            // Send a message to the server (this can be triggered by some user action)
-            ws.onopen = function() {
-                ws.send("User joined the room");
-            };
-        });
-    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cry Room Webapp</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </head>
 <body>
-    <h1>Welcome to the Crying Room</h1>
-    <p>Current Cryers: <span id="cryersCount">0</span></p>
+    <div id="chat">
+        <input type="text" id="message_input" placeholder="Type your message here...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+    <div id="messages"></div>
+    <div id="user_count">Online Users: 0</div>
 </body>
 </html>
