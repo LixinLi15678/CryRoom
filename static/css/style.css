@@ -45,3 +45,16 @@ button:disabled {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
+
+@keyframes cryAnimation {
+    0% { opacity: 1; transform: translateY(0); }
+    50% { opacity: 0.5; transform: translateY(-20px); }
+    100% { opacity: 0; transform: translateY(-40px); }
+}
+
+.cryingEmoji {
+    position: fixed;
+    font-size: 48px;
+    animation: cryAnimation 2s ease-out forwards;
+    pointer-events: none; 
+}

@@ -11,12 +11,33 @@ function cry() {
     var cryButton = document.getElementById('cry_button');
     if (!cryButton.disabled) {
         socket.emit('try_cry');
+        animateCryingEmoji();
         cryButton.disabled = true;
-        cryButton.style.backgroundColor = 'gray';  // Change button color to gray
         setTimeout(() => {
             cryButton.disabled = false;
-            cryButton.style.backgroundColor = '';  // Reset button color
         }, 5000); // Reset the cooldown after 5 seconds
+    }
+}
+
+function animateCryingEmoji() {
+    var body = document.body;
+    var emojiCount = 50; 
+
+    for (let i = 0; i < emojiCount; i++) {
+        var emoji = document.createElement('div');
+        emoji.textContent = '😭'; 
+        emoji.className = 'cryingEmoji';
+        emoji.style.left = (Math.random() * (window.innerWidth - 50)) + 'px'; // Random horizontal position
+        emoji.style.top = (Math.random() * (window.innerHeight - 50)) + 'px'; // Random vertical position
+
+        body.appendChild(emoji);
+
+        // Remove the emoji after the animation ends
+        setTimeout(() => {
+            if (body.contains(emoji)) {
+                body.removeChild(emoji);
+            }
+        }, 2000); 
     }
 }
 
