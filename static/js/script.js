@@ -45,8 +45,15 @@ socket.on('broadcast message', function(data) {
     var messages = document.getElementById('messages');
     var message = document.createElement('div');
     message.textContent = data.text;
+
+    // Apply the styles
+    message.style.fontFamily = data.style.font;
+    message.style.fontSize = data.style.size;
+    message.style.color = data.style.color;
+
     messages.appendChild(message);
 });
+
 
 socket.on('user count update', function(data) {
     var userCountDisplay = document.getElementById('user_count');
