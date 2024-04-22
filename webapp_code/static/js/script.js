@@ -85,6 +85,10 @@ document.getElementById('message_input').addEventListener('keypress', function(e
 function cry() {
     var cryButton = document.getElementById('cry_button');
     if (!cryButton.disabled) {
+        messagesRef.push({
+            text: "😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭",
+            timestamp: firebase.database.ServerValue.TIMESTAMP
+        });
         animateCryingEmoji(); // Create the crying emoji animation
         cryButton.disabled = true;
         setTimeout(function() {
