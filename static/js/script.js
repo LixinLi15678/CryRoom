@@ -41,6 +41,18 @@ function animateCryingEmoji() {
     }
 }
 
+
+function displayPopup(message) {
+    var popup = document.getElementById("message");
+    popup.innerHTML = message;
+    popup.style.display = "block";
+    setTimeout(function(){
+        popup.style.display = "none";
+    }, 3000); // Close the pop-up after 3 seconds
+}
+
+
+
 socket.on('broadcast message', function(data) {
     var messages = document.getElementById('messages');
     var message = document.createElement('div');
