@@ -14,7 +14,7 @@ var messagesRef = firebase.database().ref('messages');
 var onlineUsersRef = firebase.database().ref('onlineUsers');
 
 // Track each user's presence
-var currentUserRef; // Reference for the current user
+var currentUserRef; 
 firebase.database().ref('.info/connected').on('value', function(snapshot) {
     if (snapshot.val() && !currentUserRef) {
         currentUserRef = onlineUsersRef.push(true); // Add user to the list of online users
@@ -47,7 +47,6 @@ onlineUsersRef.on('value', function(snapshot) {
     userCountDisplay.textContent = 'Online Users: ' + snapshot.numChildren();
 });
 
-// Send message to Firebase
 function sendMessage() {
     var input = document.getElementById('message_input');
     var message = input.value.trim();
@@ -57,9 +56,16 @@ function sendMessage() {
             style: getRandomStyle(),
             timestamp: firebase.database.ServerValue.TIMESTAMP
         });
+
+        if (message.toLowerCase() === "brad mcdanel" || message.toLowerCase() === "brad" || message.toLowerCase() === "mcdanel"
+            || message.toLowerCase() === "professor mcdanel" || message.toLowerCase() === "prof mcdanel"){
+            triggerSpecialAnimation();
+        }
+
         input.value = '';
     }
 }
+
 
 // Generate random style properties
 function getRandomStyle() {
@@ -86,7 +92,7 @@ function cry() {
     var cryButton = document.getElementById('cry_button');
     if (!cryButton.disabled) {
         messagesRef.push({
-            text: "😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭",
+            text: "😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭😭",
             timestamp: firebase.database.ServerValue.TIMESTAMP
         });
         animateCryingEmoji(); // Create the crying emoji animation
@@ -99,7 +105,7 @@ function cry() {
 
 function animateCryingEmoji() {
     var body = document.body;
-    var emojiCount = 50; 
+    var emojiCount = 60; 
 
     for (let i = 0; i < emojiCount; i++) {
         var emoji = document.createElement('div');
@@ -115,6 +121,31 @@ function animateCryingEmoji() {
             if (body.contains(emoji)) {
                 body.removeChild(emoji);
             }
-        }, 2000); 
+        }, 4000); 
     }
+}
+
+function triggerSpecialAnimation() {
+    const animationContainer = document.createElement('div');
+    animationContainer.id = 'special-animation';
+    animationContainer.innerHTML = `<div class="hearts"></div><div class="flash-message">Best Professor</div>`;
+
+    document.body.appendChild(animationContainer);
+
+    const heartsContainer = animationContainer.querySelector('.hearts');
+    for (let i = 0; i < 50; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.textContent = '❤️'; 
+        heart.style.left = `${Math.random() * 100}%`;
+        heart.style.top = `${Math.random() * 100}%`;
+        heartsContainer.appendChild(heart);
+    }
+
+    const flashMessage = animationContainer.querySelector('.flash-message');
+    flashMessage.style.opacity = 1; 
+
+    setTimeout(() => {
+        document.body.removeChild(animationContainer);
+    }, 4000);
 }

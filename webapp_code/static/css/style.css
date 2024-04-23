@@ -7,6 +7,7 @@ body {
     position: relative;
 }
 
+
 .emoji-pattern {
     position: absolute;
     top: 0;
@@ -70,7 +71,49 @@ button:disabled {
 
 .cryingEmoji {
     position: fixed;
-    font-size: 48px;
+    font-size: 60px;
     animation: cryAnimation 2s ease-out forwards;
     pointer-events: none; 
+}
+
+.flash-message {
+    font-size: 4rem; /* Larger font size */
+    color: #FF69B4;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 50%; 
+    transform: translateY(-50%); /* Center alignment adjustment */
+    z-index: 10; /* Above hearts */
+    opacity: 0;
+    animation: flash-text 4s ease-in-out infinite; 
+}
+
+/* Correcting heart animation */
+.heart {
+    position: absolute;
+    width: 50px; /* Size of the emoji */
+    height: 50px; 
+    font-size: 3rem; 
+    color: red;
+    bottom: 0; 
+    animation: floatHearts 4s linear infinite;
+}
+
+/* Flash text animation */
+@keyframes flash-text {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+/* Hearts floating up animation */
+@keyframes floatHearts {
+    from {
+        transform: translateX(-50%) translateY(100vh); 
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-50%) translateY(-100vh); 
+        opacity: 0;
+    }
 }
